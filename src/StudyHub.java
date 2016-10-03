@@ -12,7 +12,7 @@ public class StudyHub {
 				
 	public static void main(String[] args) {
 	
-
+		UserList userlist = new UserList();
 		Scanner user_input = new Scanner(System.in);
 
 		String first_name;
