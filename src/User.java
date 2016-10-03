@@ -1,7 +1,6 @@
 import java.util.List;
 
 public interface User {
-
 	boolean addToGroup(Group g);
 	boolean isMember(Group g);
 	boolean removeFromGroup(Group g);
