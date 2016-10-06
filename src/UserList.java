@@ -8,12 +8,12 @@ public class UserList {
 		first=null;
 	}
 	
-	private void AddUser(UserProfile user){
+	public void AddUser(UserProfile user){
 		user.NextUser=first;
 		first=user;
 	}
 	
-	private void RemoveUser(UserProfile user){
+	public void RemoveUser(UserProfile user){
 		if (first==user){
 			UserProfile temp = first.NextUser;
 			first.NextUser=null;
