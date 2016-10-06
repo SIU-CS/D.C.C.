@@ -11,7 +11,7 @@ public class UserProfile implements User{
 	}
 	
 
-	public void CreateNewUser(UserList list){
+	public static void CreateNewUser(UserList list){
 		boolean PasswordCheck=false;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("What is your First name");
@@ -36,5 +36,20 @@ public class UserProfile implements User{
 		}
 		
 	}
-
+//need to talk about how people are logged in and such
+	public void LogIn(){
+		String password;
+		String email;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("What is your E-mail address");
+		email=scan.nextLine();
+		UserProfile user = UserList.SearchUser(email);
+		while(1!=0){
+			System.out.println("Please Enter the password or enter cancel to exit");
+			password=scan.nextLine();
+			if(password==user.Password)
+				break;
+			else
+		}
+	}
 }

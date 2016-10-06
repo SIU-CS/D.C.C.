@@ -1,6 +1,6 @@
 
 public class UserList {
-	UserProfile first;
+	static UserProfile first;
 	int TotalUsers;
 	
 	public UserList(){
@@ -26,5 +26,11 @@ public class UserList {
 			}
 		currentuser.NextUser=currentuser.NextUser.NextUser;
 		}
+	}
+	public static UserProfile SearchUser(String mail){
+		UserProfile currentuser=first;
+		while(currentuser.E_Mail!=mail||currentuser!=null)
+			currentuser=currentuser.NextUser;
+		return currentuser;
 	}
 }

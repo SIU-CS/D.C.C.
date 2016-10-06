@@ -14,6 +14,14 @@ public class StudyHub {
 	
 		UserList userlist = new UserList();
 		Scanner user_input = new Scanner(System.in);
+		String user;
+		
+		System.out.println("Are you a new or returning user /nEnter 'new' or 'returning'");
+		user=user_input.nextLine();
+		if(user=="new")
+			UserProfile.CreateNewUser(userlist);
+		else
+			//user login
 
 		String first_name;
 		System.out.println("Enter your first name:");
