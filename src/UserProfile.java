@@ -11,6 +11,7 @@ public class UserProfile implements User{
 	}
 	
 
+	//create a case for if the email is already being used
 	public static void CreateNewUser(UserList list){
 		boolean PasswordCheck=false;
 		Scanner scan = new Scanner(System.in);
@@ -36,20 +37,37 @@ public class UserProfile implements User{
 		}
 		
 	}
+	
+	//Possibly some stinky code. may need to add methods to shorten this method.
 //need to talk about how people are logged in and such
-	public void LogIn(){
+	//Making this assuming that we return a userprofile for now. need to talk about how the users information will be sent to the main class
+	public UserProfile LogIn(){
 		String password;
 		String email;
+		UserProfile user;
 		Scanner scan=new Scanner(System.in);
-		System.out.println("What is your E-mail address");
-		email=scan.nextLine();
-		UserProfile user = UserList.SearchUser(email);
+		
+		while(1!=0){
+			System.out.println("What is your E-mail address");
+			email=scan.nextLine();
+			user = UserList.SearchUser(email);
+			if(email==user.E_Mail)
+				break;
+			else if(email=="cancel")
+				return null;
+			else
+				System.out.println("Email is not in database.");
+		}
 		while(1!=0){
 			System.out.println("Please Enter the password or enter cancel to exit");
 			password=scan.nextLine();
 			if(password==user.Password)
 				break;
+			else if(password=="cancel")
+				return null;
 			else
+				System.out.println("Password Incorrect");
 		}
+		return user;
 	}
 }
