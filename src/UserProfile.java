@@ -70,4 +70,7 @@ public class UserProfile implements User{
 		}
 		return user;
 	}
+	
+	
+	
 }

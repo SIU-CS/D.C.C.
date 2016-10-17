@@ -1,13 +1,15 @@
-
+//link list class
 public class UserList {
 	static UserProfile first;
 	int TotalUsers;
 	
+	//link list made
 	public UserList(){
 		TotalUsers=0;
 		first=null;
 	}
 	
+	//link list starts
 	public void AddUser(UserProfile user){
 		user.NextUser=first;
 		first=user;

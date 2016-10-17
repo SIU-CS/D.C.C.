@@ -11,7 +11,7 @@ public class StudyHub {
 	
 				
 	public static void main(String[] args) {
-	
+		GroupList grouplist = new GroupList();
 		UserList userlist = new UserList();
 		Scanner user_input = new Scanner(System.in);
 		String user;
