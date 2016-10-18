@@ -6,25 +6,18 @@ import org.junit.Test;
 public class GroupTest {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void NewGroup() {
-		Scanner scan = new Scanner(System.in);
-		String name;
-		String college;
-		System.out.println("What is the name of the new group?");
-		name=scan.nextLine();
-		System.out.println("What is the College of the subject");
-		Group.IsACollege(college);
-		fail("Not yet implemented");
+	public void NewGroupTest() {
+		GroupList grouplist = new GroupList();
+		UserProfile user =new UserProfile("cole","L","Random@siu.edu","password");
+		Group.NewGroup(user, grouplist);
+		assertSame(user, grouplist.firstgroup.Leader);
+		assertEquals("Other",grouplist.firstgroup.college);
 	}
 	
 	@Test
-	public boolean IsACollege(String college){
-		return(college=="Agricultural Sciences"||college=="Applied Sciences and Arts"||college=="Business"||college=="Education and Human Services"||college=="Engineering"||college=="Liberal Arts"||college=="Mass Communication & Media Arts"||college=="Science"||college=="School of Law"||college=="School of Medicine");
+	public void IsACollegeTest(){
+		Boolean check =Group.IsACollege("Science");
+		assertEquals(true,check);
 	}
 	
 }
