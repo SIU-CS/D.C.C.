@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.chris.studygroupfinder.Main_Activity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="278dp"
+            android:layout_weight="0.87"
+            android:weightSum="1">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_edit"
+                android:id="@+id/proImg"
+                android:layout_weight="0.47" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/editText2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:dividerPadding="40dp"
+            android:layout_height="61dp"
+            android:weightSum="1"
+            android:layout_weight="0.03">
+
+
+            <android.support.design.widget.FloatingActionButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:dividerPadding="40dp"
+                android:id="@+id/infoBut"
+                android:layout_weight="0.29"
+                app:backgroundTint="@color/colorPrimary"
+                app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+            <android.support.design.widget.FloatingActionButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:dividerPadding="40dp"
+                android:id="@+id/SearchBut"
+                android:layout_weight="0.29"
+                app:backgroundTint="@color/colorAccent"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:dividerPadding="40dp"
+                android:id="@+id/homrBut"
+                android:layout_weight="0.26"
+                app:backgroundTint="@color/colorAccent"
+                app:srcCompat="@android:drawable/star_off" />
+
+            <android.support.design.widget.FloatingActionButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:dividerPadding="40dp"
+                android:id="@+id/addBut"
+                android:layout_weight="0.35"
+                app:backgroundTint="@color/colorAccent"
+                app:srcCompat="@android:drawable/ic_menu_add" />
+
+            <android.support.design.widget.FloatingActionButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:dividerPadding="40dp"
+                android:id="@+id/calBut"
+                android:layout_weight="0.23"
+                app:backgroundTint="@color/colorAccent"
+                app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
