@@ -1,13 +1,18 @@
-package database2;
+package com.example.chris.studygroup;
+
+/**
+ * Created by Chris on 10/31/2016.
+ */
 
 public class GroupTree {
     private LinkedList root;
+    private int numOfGroups;
     public GroupTree(){
         root = new LinkedList("root");
-
+        numOfGroups=0;
     }
 //-----------------------------------------------------------------------------------------------------------------------------------+
-//                Set Methods: from general to specific                                                                              |
+//                Set Methods: from general to specific         only these need to prompt the database for changes                                                                     |
 //-----------------------------------------------------------------------------------------------------------------------------------+
     public void addSub(GenData[] data){
         int x;
@@ -16,6 +21,15 @@ public class GroupTree {
             System.out.println(data[x].getId() + " was added");
         }
 
+    }
+    public void addSubArr(String[] data){
+        int x;
+
+        for(x=0;x < data.length; x++) {
+            GenData sub = new LinkedList(data[x]);
+            root.add(sub);
+            System.out.println(data[x] + " was added");
+        }
     }
     public void addSub(LinkedList data){
         root.add(data);
@@ -28,10 +42,11 @@ public class GroupTree {
         if (subject!=null) {
             System.out.println(subject.getId() +" exists and " +group.getId()+ " was added");
             subject.add(group);
-            System.out.println(subject.getId() +" exists and " +group.getId()+ " was added");
+            numOfGroups++;
+            //database push
             return true;
         }
-        System.out.println("subject does not exist group was not added");
+        System.out.println("subject:" +subId +" does not exist group was not added");
 
         return false;
 
@@ -43,9 +58,10 @@ public class GroupTree {
 
             group.add(input);
             System.out.println(group.getId() +" exists and " + input.getId() + " was added");
+            //database push
             return true;
         }
-        System.out.println("group does not exist user was not added");
+        System.out.println("group:" + groupId +" does not exist user was not added");
 
         return false;
     }
@@ -70,11 +86,49 @@ public class GroupTree {
         return null;
     }
 
+    public GenData[] getGroups(){
+        LinkedList[] current,subjects =(LinkedList[])root.toArr();
+        GenData[] ret= new GenData[numOfGroups];
+        int x,y,z=0;
+
+        for(x=0;x<subjects.length;x++) {
+            y=0;
+            current=(LinkedList[])subjects[x].toArr();
+            while(y < current.length) {
+                ret[z]=current[y];
+                y++;
+                z++;
+            }
+
+        }
+        return ret;
+    }
+    public GenData[] Search(String keyword){
+
+        LinkedList[] current,subjects =(LinkedList[])root.toArr();
+        GenData[] ret= new GenData[numOfGroups];
+        int x,y,z=0;
+        for(x=0;x<subjects.length;x++) {
+            y=0;
+            current=(LinkedList[])subjects[x].toArr();
+            while(y < current.length) {
+                if(current[y].getId().contains(keyword)) {
+                    ret[z]=current[y];
+                    z++;
+                }
+                y++;
+
+            }
+
+        }
+        return ret;
+    }
+
     public LinkedList getGroup(String ID){
 
-            LinkedList[] subjects = (LinkedList[])root.toArr();
+            LinkedList[] current, subjects = (LinkedList[])root.toArr();
 
-            LinkedList[] current;
+
             int x,y;
             for(x=0;x<subjects.length;x++) {
                 current=(LinkedList[])subjects[x].toArr();
@@ -92,9 +146,20 @@ public class GroupTree {
 //-----------------------------------------------------------------------------------------------------------------------------------+
 //                To String                                                                                                           |
 //-----------------------------------------------------------------------------------------------------------------------------------+
- public String toString(){
+    public String toString(){
     return root.toString();
  }
 
+    public String SubToString(String subId){
+        LinkedList subject=getSub(subId);
+        String ret=subject.getId()+":\n";
+        GenData[] groups=subject.toArr();
+
+        for (int x=0;x<groups.length;x++){
+            ret+=groups[x].toString();
+            ret+=groups[x].getMessages();
+        }
+        return ret;
+    }
 
 }

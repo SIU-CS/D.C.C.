@@ -1,8 +1,13 @@
-package database2;
+package com.example.chris.studygroup;
+
+/**
+ * Created by Chris on 10/30/2016.
+ */
 
 public class LinkedList extends GenData{
     private Node header,prev;
     private String ID;
+    private Queue messages;
 
     public LinkedList(String id) {
         header = new Node(null);
@@ -34,8 +39,11 @@ public class LinkedList extends GenData{
 
             }
             while (!current.isLast());
-            System.out.println("data was not found");
-            return null;
+            if(current.getData()==data)return current;
+            else {
+                System.out.println("data was not found");
+                return null;
+            }
 
         } else {
             System.out.println("there is no data to search");
@@ -126,8 +134,21 @@ public class LinkedList extends GenData{
     public void setId(String id){
         this.ID=id;
     }
+//-----------------------------------------------------------------------------------------------------------------------------------+
+//                Group Specific methods                                                                                            |
+//-----------------------------------------------------------------------------------------------------------------------------------+
 
+    public void strtMsgQ(int length){
+        messages=new Queue(length);
+    }
 
+    public void addMsg(Message msg){
+        messages.push(msg);
+    }
+    @Override
+    public String getMessages(){
+        return messages.toString();
+    }
 
 }
 class Node{
