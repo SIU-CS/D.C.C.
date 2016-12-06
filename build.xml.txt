@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project name=“StudyGroup” default=“compile">
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src" destdir="build/classes"/>
+	</target>
+
+	<property name="test.report.dir" value="./tests"/>
+	<mkdir dir="${test.report.dir}"/>
+
+	<target name="junit" depends="compile">
+		<junit printsummary="on" fork="true" haltonfailure="yes">
+			<classpath >
+				<fileset dir="lib/">
+				<include name="junit-4.12.jar" />
+				</fileset>
+			</classpath>
+			<formatter type="plain" />
+			<batchtest todir="${test.report.dir}">
+				<fileset dir="${src.dir}">
+					<include name="**/*GroupTreeTest.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+</project>
